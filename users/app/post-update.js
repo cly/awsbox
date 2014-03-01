@@ -185,7 +185,7 @@ function doDeploy() {
         console.log(">> " + script + " logs at " + logfilePath);
         var foreverCmd = 'forever -a -l ' + logfilePath + ' start ';
         foreverCmd += ' --minUptime 1000 --spinSleepTime 1000 ';
-        foreverCmd += cmd;
+        foreverCmd += '-c \'node --harmony\' ' + cmd;
         commands.push([ 'start ' + script, foreverCmd ]);
         runNextCommand(function(err) {
           delete process.env['PORT'];
