@@ -183,7 +183,7 @@ function doDeploy() {
         var cmd = path.join(codeDir, script);
         var logfilePath = path.join(process.env['HOME'], 'var', 'log', path.basename(script) + '.log');
         console.log(">> " + script + " logs at " + logfilePath);
-        var foreverCmd = 'forever -a -l ' + logfilePath + ' start ';
+        var foreverCmd = 'NODE_PATH=\'/home/app/code\' forever -a -l ' + logfilePath + ' start ';
         foreverCmd += ' --minUptime 1000 --spinSleepTime 1000 ';
         foreverCmd += '-c \'node --harmony\' ' + cmd;
         commands.push([ 'start ' + script, foreverCmd ]);
